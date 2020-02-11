@@ -36,8 +36,8 @@ class ImaggaService{
                 let decoder = JSONDecoder()
                 let imaggaColorResponse = try decoder.decode(ImaggaColorResponse.self, from: data)
                 let imaggaColors = imaggaColorResponse.result.colors.imaggaColors
-                //let colors = imaggaColors.compactMap{ UIColor($0) }
-                //completion(colors)
+                let colors = imaggaColors.compactMap{ UIColor($0) }
+                completion(colors)
             }catch {
                 if attempts < 2 {
                     return self.fetchColorsFor(imagePath: imagePath, attempts: attempts + 1, completion: completion)
