@@ -1,9 +1,9 @@
 //
 //  ImaggaService.swift
-//  Palette
+//  PaletteiOS29
 //
-//  Created by DevMountain on 4/2/19.
-//  Copyright © 2019 trevorAdcock. All rights reserved.
+//  Created by Darin Armstrong on 10/22/19.
+//  Copyright © 2019 Darin Armstrong. All rights reserved.
 //
 
 import UIKit
@@ -14,8 +14,9 @@ class ImaggaService{
     static let shared = ImaggaService()
     private init() {}
     
-    static let baseURLPath = "http://api.imagga.com/v2"
-    static let authenticationToken = "Basic YWNjXzJmODQ2NWFjYmM2NzQxMDo3Y2Y4ODFjNDViOGI0YzE0YmE4YmY4NWNiMmE3ZTczMw=="
+    static let baseURLPath = "https://api.imagga.com/v2"
+    //TODO: - Input API Key
+    static let authenticationToken = "Basic YWNjXzEzMDRmMDhjNmQ2ZTc1YzplYzQ1MTRiMGQ3MmYwODRhNTVlZGJlY2U4MmRjYmM0MQ=="
     
     func fetchColorsFor(imagePath: String, attempts: Int =  0, completion: @escaping ([UIColor]?) -> Void){
         guard let url = URL(string: ImaggaService.baseURLPath)?.appendingPathComponent("colors") else { completion(nil) ; return }
@@ -35,8 +36,8 @@ class ImaggaService{
                 let decoder = JSONDecoder()
                 let imaggaColorResponse = try decoder.decode(ImaggaColorResponse.self, from: data)
                 let imaggaColors = imaggaColorResponse.result.colors.imaggaColors
-                let colors = imaggaColors.compactMap{ UIColor($0) }
-                completion(colors)
+                //let colors = imaggaColors.compactMap{ UIColor($0) }
+                //completion(colors)
             }catch {
                 if attempts < 2 {
                     return self.fetchColorsFor(imagePath: imagePath, attempts: attempts + 1, completion: completion)

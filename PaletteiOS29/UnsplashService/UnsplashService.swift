@@ -1,9 +1,9 @@
 //
 //  UnsplashService.swift
-//  Palette
+//  PaletteiOS29
 //
-//  Created by DevMountain on 4/2/19.
-//  Copyright © 2019 trevorAdcock. All rights reserved.
+//  Created by Darin Armstrong on 10/22/19.
+//  Copyright © 2019 Darin Armstrong. All rights reserved.
 //
 
 import Foundation
